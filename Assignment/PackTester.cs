@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Assignment
 {
+    
     public class Pack
     {
         private List<InventoryItem> _items;

@@ -1,99 +1,66 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace Assignment
 {
-    class Pack
+    public abstract class InventoryItem
     {
-        private List<InventoryItem> _items; // Using List<> data structure instead of an array
-        private int _maxCount;
-        private float _maxVolume;
-        private float _maxWeight;
+        public string Name { get; set; }
+        public double Volume { get; set; }
+        public double Weight { get; set; }
 
-        public Pack(int maxCount, float maxVolume, float maxWeight)
+        public InventoryItem(string name, double volume, double weight)
         {
-            _items = new List<InventoryItem>();
-            _maxCount = maxCount;
-            _maxVolume = maxVolume;
-            _maxWeight = maxWeight;
-        }
-
-        public bool Add(InventoryItem item)
-        {
-            if (_items.Count >= _maxCount || _items.Sum(i => i.Volume) + item.Volume > _maxVolume || _items.Sum(i => i.Weight) + item.Weight > _maxWeight)
-                return false;
-
-            _items.Add(item);
-            return true;
-        }
-
-        public override string ToString()
-        {
-            string result = "Pack contents:\n";
-            foreach (InventoryItem item in _items)
-            {
-                result += item.ToString() + "\n";
-            }
-            return result;
+            Name = name;
+            Volume = volume;
+            Weight = weight;
         }
     }
 
-    class InventoryItem
-    {
-        public float Volume { get; set; }
-        public float Weight { get; set; }
-    }
+
+
 
     class Arrow : InventoryItem
     {
-        public Arrow() : base()
+        public Arrow(string name, double volume, double weight) : base(name, volume, weight)
         {
-            Volume = 0.1f;
-            Weight = 0.05f;
         }
     }
 
     class Bow : InventoryItem
     {
-        public Bow() : base()
+        public Bow(string name, double volume, double weight) : base(name, volume, weight)
         {
-            Volume = 1.0f;
-            Weight = 1.5f;
         }
     }
 
     class Rope : InventoryItem
     {
-        public Rope() : base()
+        public Rope(string name, double volume, double weight) : base(name, volume, weight)
         {
-            Volume = 0.5f;
-            Weight = 0.8f;
         }
     }
 
     class Water : InventoryItem
     {
-        public Water() : base()
+        public Water(string name, double volume, double weight) : base(name, volume, weight)
         {
-            Volume = 2.0f;
-            Weight = 2.5f;
         }
     }
 
     class Food : InventoryItem
     {
-        public Food() : base()
+        public Food(string name, double volume, double weight) : base(name, volume, weight)
         {
-            Volume = 1.5f;
-            Weight = 1.0f;
         }
     }
 
     class Sword : InventoryItem
     {
-        public Sword() : base()
+        public Sword(string name, double volume, double weight) : base(name, volume, weight)
         {
-            Volume = 3.0f;
-            Weight = 4.0f;
         }
     }
 }
