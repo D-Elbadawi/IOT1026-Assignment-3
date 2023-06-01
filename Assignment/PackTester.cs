@@ -71,7 +71,7 @@ namespace Assignment
             bool addMoreItems = true;
             do
             {
-                Console.WriteLine(pack); // See output image for what this should display
+                Console.WriteLine(pack); // output image for what this should display
 
                 Console.WriteLine("What do you want to add?");
                 Console.WriteLine("1 - Arrow");
