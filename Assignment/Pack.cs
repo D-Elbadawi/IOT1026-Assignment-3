@@ -1,37 +1,99 @@
-﻿namespace Assignment;
+﻿using System;
 
-class Pack
+namespace Assignment
 {
-    private InventoryItem[] _items; // You can use another data structure here if you prefer.
-    // You may need another private member variable if you use an array data structure.
-
-    public Pack(int maxCount, float maxVolume, float maxWeight)
+    class Pack
     {
-        throw new NotImplementedException();
+        private List<InventoryItem> _items; // Using List<> data structure instead of an array
+        private int _maxCount;
+        private float _maxVolume;
+        private float _maxWeight;
+
+        public Pack(int maxCount, float maxVolume, float maxWeight)
+        {
+            _items = new List<InventoryItem>();
+            _maxCount = maxCount;
+            _maxVolume = maxVolume;
+            _maxWeight = maxWeight;
+        }
+
+        public bool Add(InventoryItem item)
+        {
+            if (_items.Count >= _maxCount || _items.Sum(i => i.Volume) + item.Volume > _maxVolume || _items.Sum(i => i.Weight) + item.Weight > _maxWeight)
+                return false;
+
+            _items.Add(item);
+            return true;
+        }
+
+        public override string ToString()
+        {
+            string result = "Pack contents:\n";
+            foreach (InventoryItem item in _items)
+            {
+                result += item.ToString() + "\n";
+            }
+            return result;
+        }
     }
 
-    public bool Add(InventoryItem item)
+    class InventoryItem
     {
-        throw new NotImplementedException();
+        public float Volume { get; set; }
+        public float Weight { get; set; }
     }
 
-    // Implement this class
-    public override string ToString()
+    class Arrow : InventoryItem
     {
-        throw new NotImplementedException();
+        public Arrow() : base()
+        {
+            Volume = 0.1f;
+            Weight = 0.05f;
+        }
+    }
+
+    class Bow : InventoryItem
+    {
+        public Bow() : base()
+        {
+            Volume = 1.0f;
+            Weight = 1.5f;
+        }
+    }
+
+    class Rope : InventoryItem
+    {
+        public Rope() : base()
+        {
+            Volume = 0.5f;
+            Weight = 0.8f;
+        }
+    }
+
+    class Water : InventoryItem
+    {
+        public Water() : base()
+        {
+            Volume = 2.0f;
+            Weight = 2.5f;
+        }
+    }
+
+    class Food : InventoryItem
+    {
+        public Food() : base()
+        {
+            Volume = 1.5f;
+            Weight = 1.0f;
+        }
+    }
+
+    class Sword : InventoryItem
+    {
+        public Sword() : base()
+        {
+            Volume = 3.0f;
+            Weight = 4.0f;
+        }
     }
 }
-
-class InventoryItem
-{
-    // Implement this class
-}
-
-// Implement these classes - each inherits from InventoryItem
-// 1 line of code each - call base class constructor with appropriate arguments
-class Arrow : InventoryItem { }
-class Bow : InventoryItem { }
-class Rope : InventoryItem { }
-class Water : InventoryItem { }
-class Food : InventoryItem { }
-class Sword : InventoryItem { }
