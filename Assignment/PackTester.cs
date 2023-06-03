@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Assignment
 {
-    
+
     public class Pack
     {
         private List<InventoryItem> _items;
@@ -71,7 +71,7 @@ namespace Assignment
             bool addMoreItems = true;
             do
             {
-                Console.WriteLine(pack); // output image for what this should display
+                Console.WriteLine(pack); // Output image for what this should display
 
                 Console.WriteLine("What do you want to add?");
                 Console.WriteLine("1 - Arrow");
@@ -85,7 +85,7 @@ namespace Assignment
                 try
                 {
                     int choice = Convert.ToInt32(Console.ReadLine());
-
+                    //switch statement
                     InventoryItem newItem = choice switch
                     {
                         1 => new Arrow("Arrow", 0.1, 0.2),

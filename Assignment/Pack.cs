@@ -10,7 +10,7 @@ namespace Assignment
         public string Name { get; set; }
         public double Volume { get; set; }
         public double Weight { get; set; }
-        //New Items
+        ///New Items
         public InventoryItem(string name, double volume, double weight)
         {
             Name = name;
